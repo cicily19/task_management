@@ -28,3 +28,5 @@ RUN npm ci && npm run build
 EXPOSE 8080
 
 CMD ["sh", "-lc", "php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
+
+RUN printf "display_errors=0\nlog_errors=1\nerror_reporting=E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED\n" > /usr/local/etc/php/conf.d/99-no-deprecations.ini
