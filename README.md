@@ -157,7 +157,7 @@ Typical flow for **Render**, **Railway**, **Fly.io**, or similar:
 4. Release: `php artisan migrate --force` (and optionally `php artisan db:seed --force`).
 5. Web server document root must be `public/`. Use the platform’s PHP buildpack or a Docker image that runs `php-fpm` + nginx/apache.
 
-A public URL is **not included** with this submission; after you deploy, use your platform’s generated HTTPS URL for reviewers.
+A public URL is **included** with this submission; https://taskmanagement-cicily.up.railway.app/ after you deploy, use your platform’s generated HTTPS URL for reviewers.
 
 ## Project structure (high level)
 
