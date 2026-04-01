@@ -21,11 +21,10 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN npm ci && npm run build
 
 # Laravel caches (safe in container build)
-RUN php artisan config:cache \
- && php artisan route:cache \
- && php artisan view:cache
+# RUN php artisan config:cache \
+# && php artisan route:cache \
+# && php artisan view:cache
 
- EXPOSE 8080
- ENV PORT=8080
- 
- CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+EXPOSE 8080
+
+CMD ["sh", "-lc", "php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
